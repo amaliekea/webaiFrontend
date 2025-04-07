@@ -6,7 +6,7 @@ const responseElement = document.getElementById("response");
 sendQuestionButton.addEventListener("click", () => {
     sendAndRecieve()
 });
-
+//hej
 async function sendAndRecieve() {
     const questionInput = document.getElementById("questionInput").value; //hiver værdien ud ved .value
     const includeQuizInput = document.getElementById("includeQuizInput").value;
