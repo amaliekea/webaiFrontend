@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Tech Quiz AI</title>
+    <title>Studyhelper</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<h1>Your personal studyhelper</h1>
 
+<label for="questionInput">Enter a subject or question:</label><br>
+<textarea id="questionInput" rows="4" cols="50" placeholder="example.. explain Docker"></textarea><br><br>
+
+<button onclick="sendQuestion()">Send Question to AI</button>
+
+<h2>AI's svar:</h2>
+<pre id="answerBox"></pre>
+
+<footer>
+    <p>Customerservice: </p>
+    <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
+</footer>
+
+<script src="frontpage.js"></script>
 </body>
 </html>
