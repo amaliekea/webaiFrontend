@@ -9,7 +9,7 @@ sendQuestionButton.addEventListener("click", () => {
 
 async function sendAndRecieve() {
     const questionInput = document.getElementById("questionInput").value; //hiver værdien ud ved .value
-    const includeQuizInput = document.getElementById("includeQuizInput").value;
+    const includeQuizInput = document.getElementById("includeQuizInput").value; //vigtigt først at hive værdien ud når der er trykket på kanp
     const levelInput = document.getElementById("levelInput").value;
     console.log("knap kaldt")
     const data = {
@@ -26,11 +26,13 @@ async function sendAndRecieve() {
         body: JSON.stringify(data)
     })
 
-    //show response
-    const text = await response.text(); //fordi backend retunerer string
-    responseElement.textContent = text;
+    let text = await response.text();
+
+
+    responseElement.innerHTML = text;
     responseElement.style.display = "block";
-    console.log("Svar fra backend:", text);
+
+
 }
 
 function logout() {
