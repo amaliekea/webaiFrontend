@@ -28,3 +28,14 @@ async function sendAndRecieve() {
     responseElement.style.display = "block";
     console.log("Svar fra backend:", text);
 }
+
+function logout() {
+    // Clear the username from localStorage
+    localStorage.removeItem('username');
+
+    // Clear the displayed username from the page
+    document.getElementById('userInfo').innerText = '';
+
+    // Optionally, redirect the user to the login page
+    window.location.href = 'login.html';
+}
