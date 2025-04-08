@@ -12,9 +12,13 @@ async function sendAndRecieve() {
     const includeQuizInput = document.getElementById("includeQuizInput").value;
     const levelInput = document.getElementById("levelInput").value;
     console.log("knap kaldt")
-    const data = {"topic": questionInput, includeQuizInput, levelInput}
+    const data = {
+        topic: questionInput,
+        includeQuiz: includeQuizInput,
+        level: levelInput
+    }
     console.log(data)
-  const response =  await fetch(urlQuestion, {
+    const response = await fetch(urlQuestion, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
