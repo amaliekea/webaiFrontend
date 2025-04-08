@@ -1,13 +1,20 @@
 console.log("jeg er i frontpage!!");
-const urlQuestion = "http://localhost:8080/study-helper";
-const sendQuestionButton = document.getElementById("sendQuestion");
+
+const sendQuestionToOpenAiButton = document.getElementById("sendQuestionToOpenAi");
+const sendQuestionToMistralButton = document.getElementById("sendQuestionToMistral");
 const responseElement = document.getElementById("response");
 
-sendQuestionButton.addEventListener("click", () => {
-    sendAndRecieve()
+const urlQuestion = "http://localhost:8080/study-helper";
+
+sendQuestionToOpenAiButton.addEventListener("click", () => {
+    sendAndReceive("gpt-3.5-turbo");
 });
 
-async function sendAndRecieve() {
+sendQuestionToMistralButton.addEventListener("click", () => {
+    sendAndReceive("mistral-small-latest");
+});
+
+async function sendAndReceive(model) {
     const questionInput = document.getElementById("questionInput").value; //hiver værdien ud ved .value
     const includeQuizInput = document.getElementById("includeQuizInput").value; //vigtigt først at hive værdien ud når der er trykket på kanp
     const levelInput = document.getElementById("levelInput").value;
@@ -18,7 +25,10 @@ async function sendAndRecieve() {
         level: levelInput
     }
     console.log(data)
-    const response = await fetch(urlQuestion, {
+
+    const url = `${urlQuestion}/${model}`;
+
+    const response = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -26,13 +36,10 @@ async function sendAndRecieve() {
         body: JSON.stringify(data)
     })
 
-    let text = await response.text();
-
+    const text = await response.text();
 
     responseElement.innerHTML = text;
     responseElement.style.display = "block";
-
-
 }
 
 function logout() {
