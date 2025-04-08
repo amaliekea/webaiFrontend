@@ -119,3 +119,64 @@ footer a:hover {
     height: auto;
 }
 
+#loginForm {
+    align-content: center;
+
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+#signupForm {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+/* Styling the username and logout button container */
+#userInfoContainer {
+    display: flex;
+    align-items: center;  /* Vertically center the content */
+    justify-content: flex-end;  /* Align the content to the right */
+    gap: 10px;  /* Add some space between the text and the button */
+    font-size: 16px;
+}
+
+/* Styling the "Logged in as *username*" text */
+#userInfo {
+    font-weight: bold;
+    color: #333;
+    padding-right: 10px;  /* Add some space on the right */
+}
+
+/* Styling the logout button */
+#logoutButton {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the logout button */
+#logoutButton:hover {
+    background-color: #e60000;
+}
+
+

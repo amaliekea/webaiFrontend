@@ -12,6 +12,10 @@
     <nav>
         <a href="index.html">Home</a> |
         <a href="about.html">About Us</a>
+        <div id="userInfoContainer" style="float: right;">
+            <span id="userInfo"></span>
+            <button id="logoutButton" onclick="logout()">Logout</button>
+        </div>
     </nav>
 
     <label for="questionInput">Enter a topic or question:</label><br>
@@ -34,8 +38,17 @@
     <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
     <p>+56 26 18 18</p>
 </footer>
-</body>
+
 <script src="js/frontpage.js"></script>
+
+<script>
+    window.onload = function() {
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('userInfo').innerText = username;
+        }
+    };
+</script>
+
+</body>
 </html>
-
-

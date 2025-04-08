@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Create Your Account</h1>
+<div class="form-wrapper">
+    <form id="signupForm">
+
+        <label for="signupUsername">Username:</label><br>
+        <input type="text" id="signupUsername" name="username" required><br><br>
+
+        <label for="signupPassword">Password:</label><br>
+        <input type="password" id="signupPassword" name="password" required><br><br>
+
+        <button type="submit">Sign Up</button>
+
+        <p id="signupMessage" style="color: red;"></p>
+    </form>
+</div>
+
+<script>
+    const signupForm = document.getElementById("signupForm");
+
+    signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const username = document.getElementById("signupUsername").value;
+        const password = document.getElementById("signupPassword").value;
+
+        const response = await fetch("http://localhost:8080/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, pword: password })
+        });
+
+        const signupMessage = document.getElementById("signupMessage");
+
+        if (response.ok) {
+            signupMessage.style.color = "green";
+            signupMessage.textContent = "User created successfully! Redirecting to login page...";
+
+            setTimeout(() => {
+                window.location.href = "login.html";
+            }, 2000);
+        } else {
+            const errorText = await response.text();
+            signupMessage.style.color = "red";
+            signupMessage.textContent = errorText;
+        }
+    });
+</script>
+</body>
+</html>
