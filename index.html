@@ -6,47 +6,60 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="form-with-subjects">
-    <div class="form-left">
-        <label for="questionInput">Enter a topic or question:</label><br>
-        <textarea id="questionInput" rows="4" cols="50" placeholder="example.. explain Docker"></textarea><br><br>
+<div class="container">
+    <img src="images/logoai.png" alt="Studyhelper Logo" class="logo">
+    <h1>Your personal studyhelper</h1>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About Us</a> |
+        <a href="login.html">Go to login page</a>
+        <div id="userInfoContainer" style="float: right;">
+            <span id="userInfo"></span>
+            <button id="logoutButton" onclick="logout()">Logout</button>
+        </div>
+    </nav>
 
-        <label for="levelInput">Enter a level:</label><br>
-        <textarea id="levelInput" rows="4" cols="50" placeholder="low, medium, high.."></textarea><br><br>
+    <div class="form-with-subjects">
+        <div class="form-left">
+            <label for="questionInput">Enter a topic or question:</label><br>
+            <textarea id="questionInput" rows="4" cols="50" placeholder="example.. explain Docker"></textarea><br><br>
 
-        <label for="includeQuizInput">do you want to include a quiz true/false:</label><br>
-        <textarea id="includeQuizInput" rows="4" cols="50" placeholder="true..."></textarea><br><br>
+            <label for="levelInput">Enter a level:</label><br>
+            <textarea id="levelInput" rows="4" cols="50" placeholder="low, medium, high.."></textarea><br><br>
 
-        <button id="sendQuestion">Generate</button>
+            <label for="includeQuizInput">do you want to include a quiz true/false:</label><br>
+            <textarea id="includeQuizInput" rows="4" cols="50" placeholder="true..."></textarea><br><br>
 
-        <h2>AI's svar:</h2>
-        <div id="response" style="white-space: pre-wrap; margin-top: 20px;"></div>
+            <button id="sendQuestion">Generate</button>
+
+            <h2>AI's svar:</h2>
+            <div id="response" style="white-space: pre-wrap; margin-top: 20px;"></div>
+        </div>
+
+        <div class="form-right">
+            <label for="subjects">Subjects:</label><br>
+            <textarea id="subjects" rows="10" cols="10"></textarea>
+        </div>
     </div>
 
-    <div class="form-right">
-        <label for="subjects">Subjects:</label><br>
-        <textarea id="subjects" rows="10" cols="10"></textarea>
-    </div>
-</div>
 
+    <footer>
+        <p>Customerservice: </p>
+        <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
+        <p>+56 26 18 18</p>
+    </footer>
 
-<footer>
-    <p>Customerservice: </p>
-    <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
-    <p>+56 26 18 18</p>
-</footer>
+    <script src="js/frontpage.js"></script>
+    <script src="js/subjects.js"></script>
 
-<script src="js/frontpage.js"></script>
-<script src="js/subjects.js"></script>
+    <script>
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            if (username) {
+                document.getElementById('userInfo').innerText = username;
+            }
+        };
+    </script>
 
-<script>
-    window.onload = function() {
-        const username = localStorage.getItem('username');
-        if (username) {
-            document.getElementById('userInfo').innerText = username;
-        }
-    };
-</script>
-
-</body>
-</html>
+    </body>
+    </html>
