@@ -1,74 +1,26 @@
 /* Reset og basestil */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-    color: #333;
+    background-color: #ffffff;
+    color: #4a4a6a; /* mørkere tekst */
     margin: 0;
     padding: 20px;
 }
 
+/* Centrering af indhold */
+body > *:not(footer) {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Overskrift */
 h1 {
-    color: #2c3e50;
+    color: #4a4a6a; /* mørkere */
     text-align: center;
 }
 
-label {
-    font-weight: bold;
-}
-
-textarea {
-    width: 100%;
-    max-width: 600px;
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    resize: vertical;
-    margin-bottom: 10px;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-#answerBox {
-    background-color: #ecf0f1;
-    padding: 15px;
-    white-space: pre-wrap;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    max-width: 600px;
-    margin-top: 15px;
-}
-
-footer {
-    margin-top: 40px;
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
-    text-align: center;
-    color: #777;
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
+/* Navigation */
 nav {
     margin-bottom: 20px;
     text-align: center;
@@ -77,11 +29,170 @@ nav {
 nav a {
     margin: 0 10px;
     text-decoration: none;
-    color: #3498db;
+    color: #8892b3;
     font-weight: bold;
 }
 
 nav a:hover {
+    color: #c2c2ff;
+}
+
+/* Formular */
+label {
+    font-weight: bold;
+    color: #4a4a6a;
+    display: block;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #c2c2ff;
+    background-color: #ffffff;
+    color: #4a4a6a;
+    resize: vertical;
+    margin-top: 5px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Knap */
+button {
+    margin-top: 20px;
+    background-color: #c2c2ff;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+}
+
+button:hover {
+    background-color: #8892b3;
+}
+
+/* Svar */
+#response {
+    background-color: #f0f4ff;
+    color: #4a4a6a;
+    padding: 15px;
+    white-space: pre-wrap;
+    border-radius: 8px;
+    border: 1px solid #c2c2ff;
+    margin-top: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    border-top: 1px solid #e1e8ff;
+    padding-top: 15px;
+    text-align: center;
+    color: #8892b3;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #8892b3;
+    text-decoration: none;
+}
+
+footer a:hover {
     text-decoration: underline;
 }
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+}
+.logo {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 180px;
+    height: auto;
+}
+
+#loginForm {
+    align-content: center;
+
+}
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginForm {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+#signupForm {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+/* Styling the username and logout button container */
+#userInfoContainer {
+    display: flex;
+    align-items: center;  /* Vertically center the content */
+    justify-content: flex-end;  /* Align the content to the right */
+    gap: 10px;  /* Add some space between the text and the button */
+    font-size: 16px;
+}
+
+/* Styling the "Logged in as *username*" text */
+#userInfo {
+    font-weight: bold;
+    color: #333;
+    padding-right: 10px;  /* Add some space on the right */
+}
+
+/* Styling the logout button */
+#logoutButton {
+    padding: 5px 10px;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the logout button */
+#logoutButton:hover {
+    background-color: #e60000;
+}
+.form-with-subjects {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.form-left {
+    flex: 3;
+}
+
+.form-right {
+    flex: 1;
+}
+
+
+
+
 
