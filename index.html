@@ -41,25 +41,26 @@
             <textarea id="subjects" rows="10" cols="10"></textarea>
         </div>
     </div>
+</div>
 
 
-    <footer>
-        <p>Customerservice: </p>
-        <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
-        <p>+56 26 18 18</p>
-    </footer>
+<footer>
+    <p>Customerservice: </p>
+    <p><a href="examai@customerservice.com">examai@customerservice.com</a></p>
+    <p>+56 26 18 18</p>
+</footer>
 
-    <script src="js/frontpage.js"></script>
-    <script src="js/subjects.js"></script>
+<script src="js/frontpage.js"></script>
+<script src="js/subjects.js"></script>
 
-    <script>
-        window.onload = function() {
-            const username = localStorage.getItem('username');
-            if (username) {
-                document.getElementById('userInfo').innerText = username;
-            }
-        };
-    </script>
+<script>
+    window.onload = function () {
+        const username = localStorage.getItem('username');
+        if (username) {
+            document.getElementById('userInfo').innerText = username;
+        }
+    };
+</script>
 
-    </body>
-    </html>
+</body>
+</html>
