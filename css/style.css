@@ -178,6 +178,20 @@ footer a:hover {
 #logoutButton:hover {
     background-color: #e60000;
 }
+.form-with-subjects {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.form-left {
+    flex: 3;
+}
+
+.form-right {
+    flex: 1;
+}
+
 
 
 
