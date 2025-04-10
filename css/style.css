@@ -165,7 +165,7 @@ footer a:hover {
 /* Styling the logout button */
 #logoutButton {
     padding: 5px 10px;
-    background-color: #ff4d4d;
+    background-color: #a3a3ff;  /* Blød lilla */
     color: white;
     border: none;
     cursor: pointer;
