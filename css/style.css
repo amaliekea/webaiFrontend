@@ -192,6 +192,30 @@ footer a:hover {
     flex: 1;
 }
 
+.response-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    white-space: pre-wrap;
+    border: 1px solid #c2c2ff;
+    display: none;
+}
+
+/* Blid lilla-blå fejlbesked */
+.response-message.error {
+    background-color: #f2f0ff;
+    color: #6e63a7;
+    border-color: #c2c2ff;
+}
+
+/* Normal visning */
+.response-message.success {
+    background-color: #f0f4ff;
+    color: #4a4a6a;
+    border-color: #c2c2ff;
+}
+
 
 
 
