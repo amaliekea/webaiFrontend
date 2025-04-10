@@ -1,5 +1,5 @@
 console.log("jeg er i frontpage!!");
-const urlQuestion = "http://localhost:8081/study-helper";
+const urlQuestion = "http://localhost:8080/study-helper";
 const sendQuestionButton = document.getElementById("sendQuestion");
 const responseElement = document.getElementById("response");
 
