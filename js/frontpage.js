@@ -8,31 +8,48 @@ sendQuestionButton.addEventListener("click", () => {
 });
 
 async function sendAndRecieve() {
-    const questionInput = document.getElementById("questionInput").value; //hiver værdien ud ved .value
-    const includeQuizInput = document.getElementById("includeQuizInput").value; //vigtigt først at hive værdien ud når der er trykket på kanp
-    const levelInput = document.getElementById("levelInput").value;
-    console.log("knap kaldt")
+    const questionInput = document.getElementById("questionInput").value.trim();
+    const includeQuizInput = document.getElementById("includeQuizInput").value.trim();
+    const levelInput = document.getElementById("levelInput").value.trim();
+
+    const responseBox = document.getElementById("response");
+
+    if (!questionInput || !includeQuizInput || !levelInput) {
+        responseBox.innerHTML = "⚠️ Udfyld venligst alle felter før du sender.";
+        responseBox.className = "response-message error";
+        responseBox.style.display = "block";
+        return;
+    }
+
     const data = {
         topic: questionInput,
         includeQuiz: includeQuizInput,
         level: levelInput
+    };
+
+    try {
+        const response = await fetch("http://localhost:8081/study-helper", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            responseBox.innerHTML = `❌ Fejl: ${error.message}<br>Statuskode: ${error.statusCode}`;
+            responseBox.className = "response-message error";
+            return;
+        }
+
+        const text = await response.text();
+        responseBox.innerHTML = text;
+        responseBox.className = "response-message success";
+    } catch (err) {
+        responseBox.innerHTML = "🚫 Kunne ikke få forbindelse til serveren.";
+        responseBox.className = "response-message error";
     }
-    console.log(data)
-    const response = await fetch(urlQuestion, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
 
-    let text = await response.text();
-
-
-    responseElement.innerHTML = text;
-    responseElement.style.display = "block";
-
-
+    responseBox.style.display = "block";
 }
 
 function logout() {
