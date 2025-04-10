@@ -14,8 +14,9 @@ async function sendAndRecieve() {
 
     const responseBox = document.getElementById("response");
 
+    // Check if any fields are empty
     if (!questionInput || !includeQuizInput || !levelInput) {
-        responseBox.innerHTML = "⚠️ Udfyld venligst alle felter før du sender.";
+        responseBox.innerHTML = "⚠️ Please fill out all fields before submitting.";
         responseBox.className = "response-message error";
         responseBox.style.display = "block";
         return;
@@ -28,7 +29,7 @@ async function sendAndRecieve() {
     };
 
     try {
-        const response = await fetch("http://localhost:8081/study-helper", {
+        const response = await fetch("http://localhost:8080/study-helper", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -36,7 +37,7 @@ async function sendAndRecieve() {
 
         if (!response.ok) {
             const error = await response.json();
-            responseBox.innerHTML = `❌ Fejl: ${error.message}<br>Statuskode: ${error.statusCode}`;
+            responseBox.innerHTML = `❌ Error: ${error.message}<br>Status code: ${error.statusCode}`;
             responseBox.className = "response-message error";
             return;
         }
@@ -45,7 +46,7 @@ async function sendAndRecieve() {
         responseBox.innerHTML = text;
         responseBox.className = "response-message success";
     } catch (err) {
-        responseBox.innerHTML = "🚫 Kunne ikke få forbindelse til serveren.";
+        responseBox.innerHTML = "🚫 Could not connect to the server.";
         responseBox.className = "response-message error";
     }
 
