@@ -1,5 +1,5 @@
 console.log("jeg er i frontpage!!");
-const urlQuestion = "http://localhost:8080/study-helper";
+const urlQuestion = "http://localhost:8080/study-helper/{modal}";
 const sendQuestionButton = document.getElementById("sendQuestion");
 const responseElement = document.getElementById("response");
 
@@ -62,4 +62,42 @@ function logout() {
 
     // Optionally, redirect the user to the login page
     window.location.href = 'login.html';
+}
+
+
+// Function to toggle the visibility of the correct answer
+function toggleAnswer(questionId) {
+    const correctAnswerElement = document.getElementById(`correct-answer-${questionId}`);
+
+    // If the correct answer is currently hidden, show it
+    if (correctAnswerElement.style.display === "none") {
+        correctAnswerElement.style.display = "block";
+    } else {
+        // Otherwise, hide it again
+        correctAnswerElement.style.display = "none";
+    }
+}
+
+// Example: Assuming the backend returns a list of quiz questions, use this to render the quiz:
+async function renderQuiz(parsedData) {
+    const quizContainer = document.getElementById("response");
+    quizContainer.innerHTML = ''; // Clear previous content
+
+    parsedData.questions.forEach((quiz, index) => {
+        // Render question and answers
+        const questionId = index; // Use index or any unique ID
+        const questionHTML = `
+            <div class="quiz-question" id="quiz-question-${questionId}">
+                <p>${quiz.question}</p>
+                <ul id="answers-${questionId}">
+                    ${Object.entries(quiz.answers).map(([key, value]) => {
+            return `<li class="answer">${key.toUpperCase()}: ${value}</li>`;
+        }).join('')}
+                </ul>
+                <button onclick="toggleAnswer('${questionId}')">Show Correct Answer</button>
+                <p id="correct-answer-${questionId}" style="display:none;">Correct Answer: ${Object.entries(quiz.correct_answers).find(([key, value]) => value === "true")[0].toUpperCase()}</p>
+            </div>
+        `;
+        quizContainer.innerHTML += questionHTML;
+    });
 }

@@ -34,7 +34,17 @@
             <button id="sendQuestion">Generate</button>
 
             <h2>AI's svar:</h2>
-            <div id="response" style="white-space: pre-wrap; margin-top: 20px;"></div>
+            <div class="quiz-question" id="quiz-question-{{questionId}}">
+                <p>{{question}}</p>
+                <ul id="answers-{{questionId}}">
+                    <li id="answer-a-{{questionId}}" class="answer">A: {{answerA}}</li>
+                    <li id="answer-b-{{questionId}}" class="answer">B: {{answerB}}</li>
+                    <li id="answer-c-{{questionId}}" class="answer">C: {{answerC}}</li>
+                    <li id="answer-d-{{questionId}}" class="answer">D: {{answerD}}</li>
+                </ul>
+                <button onclick="toggleAnswer('{{questionId}}')">Show Correct Answer</button>
+                <p id="correct-answer-{{questionId}}" style="display:none;">Correct Answer: {{correctAnswer}}</p>
+            </div>
         </div>
 
         <div class="form-right">
