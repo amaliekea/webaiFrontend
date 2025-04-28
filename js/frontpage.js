@@ -1,5 +1,5 @@
 console.log("jeg er i frontpage!!");
-const urlQuestion = "http://localhost:8080/study-helper";
+const urlQuestion = "http://localhost:8080/study-helper"; //url der skal sendes data til
 const sendQuestionButton = document.getElementById("sendQuestion");
 const responseElement = document.getElementById("response");
 
@@ -8,13 +8,13 @@ sendQuestionButton.addEventListener("click", () => {
 });
 
 async function sendAndRecieve() {
-    const questionInput = document.getElementById("questionInput").value.trim();
-    const includeQuizInput = document.getElementById("includeQuizInput").value.trim();
+    const questionInput = document.getElementById("questionInput").value.trim(); //trimmer for at fjerne mellemrum i start og slutning
+    const includeQuizInput = document.getElementById("includeQuizInput").value.trim(); //vi henter først værdien i funktionen og ikke i starten når DOM indlæses
     const levelInput = document.getElementById("levelInput").value.trim();
 
     const responseBox = document.getElementById("response");
 
-    // Check if any fields are empty
+    // hvis felter er tomme == error besked
     if (!questionInput || !includeQuizInput || !levelInput) {
         responseBox.innerHTML = "⚠️ Please fill out all fields before submitting.";
         responseBox.className = "response-message error";
@@ -22,7 +22,7 @@ async function sendAndRecieve() {
         return;
     }
 
-    const data = {
+    const data = { //dataobjekt
         topic: questionInput,
         includeQuiz: includeQuizInput,
         level: levelInput
@@ -30,9 +30,9 @@ async function sendAndRecieve() {
 
     try {
         const response = await fetch("http://localhost:8080/study-helper", {
-            method: "POST",
+            method: "POST", //sender post
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data) //med json data
         });
 
         if (!response.ok) {
@@ -42,7 +42,8 @@ async function sendAndRecieve() {
             return;
         }
 
-        const text = await response.text();
+        //hvis kaldet var sucess sender vi svaret som tekst
+        const text = await response.text(); //vi awaiter indtil vi har fået svar
         responseBox.innerHTML = text;
         responseBox.className = "response-message success";
     } catch (err) {
